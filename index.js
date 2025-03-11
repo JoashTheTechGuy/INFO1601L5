@@ -75,12 +75,15 @@ function averageAssessment(students, courseName, assignment) {
       for (let record of student.transcript) {
           if (record.course === courseName) {
               if (assignment >= 1 && assignment <= record.grades.length) {
-                  total += record.grades[assignment - 1]; // Adjust for zero-based index
+                  total += record.grades[assignment - 1];
                   count++;
               }
           }
       }
   }
-
-  return count > 0 ? total / count : -1;
+  if(count>0){
+    return total/count;
+  }else{
+    return -1;
+  }
 }
